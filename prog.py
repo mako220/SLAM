@@ -16,7 +16,8 @@ while(cap.isOpened()):
 
     img = cv2.resize(frame , (1920//2,1080//2))
 
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+#    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray = np.mean(img, axis=2).astype(np.uint8)
     #print(img.shape)
     #print(img)
     corners = cv2.goodFeaturesToTrack(gray,maxCorners=1000,qualityLevel=0.01,minDistance=3)
@@ -25,7 +26,7 @@ while(cap.isOpened()):
     print(corners)
     for i in corners:
          x,y = i.ravel()
-         cv2.circle(img,(x,y),3,(255,0,0),-1)
+         cv2.circle(img,(x,y),3,(255,0,0),0)
     #cv2.imshow('video',img)
     #cv2.show()
     plt.imshow(img),plt.show()
