@@ -1,1 +1,2 @@
-#SLAM
+#SLAM implementation using openCV 
+
